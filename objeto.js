@@ -70,33 +70,132 @@ function cadastroLivros() {
   // livros com +300 paginas
   for (let i = 0; i < 5; i++) {
     if (livros[i].qtde > 300) {
-      console.log(`Livro com +300 páginas: ${livros[i].titulo}`)
+      console.log(livros[i])
     }
   }
 
   // livro com maior n de paginas
-  let maiorPaginas = livros[0].qtde
-  let tituloMaior = livros[0].titulo
+  let maior = livros[0]
 
   for (let i = 0; i < 5; i++) {
-    if (livros[i].qtde > maiorPaginas) {
-      maiorPaginas = livros[i].qtde
-      tituloMaior = livros[i].titulo
+    if (livros[i].qtde > maior.qtde) {
+      maior = livros[i]
     }
   }
 
   // media de paginas de tds os livros
-  let total = 0
+  let soma = 0
 
   for (let i = 0; i < 5; i++) {
     total += livros[i].qtde
   }
-  let media = total / 5
 
   // exibe
   console.log(`Livro com maior n. de páginas: ${tituloMaior}`)
-  console.log(`Média de páginas de todos os livros: ${media}`)
+  console.log(`Média de páginas de todos os livros: ${soma / 5}`)
 
 }
 
-    
+function cadastroFuncionarios() {
+  let funcionarios = []
+  
+  // preencher
+  for (let i = 0; i < 6; i++) {
+
+    let info = {
+      nome: prompt(`Nome do Funcionário ${i+1}`),
+      cargo: prompt(`Cargo`).toLowerCase(),
+      salario: Number(prompt(`Salário`)),
+      tempoServico: Number(prompt(`Tempo na empresa (em anos)`))
+    }
+    funcionarios.push(info)
+  }
+
+  let maior = funcionarios[0]
+  let media = 0
+
+  // > 5000 & > 5 anos
+  for (let i = 0; i < 6; i++) {
+    if (funcionarios[i].salario > 5000 && funcionarios[i].tempoServico > 5) {
+      console.log(funcionarios[i])
+    }
+    // maior
+    if (funcionarios[i].salario > maior.salario) {
+      maior = funcionarios[i]
+    }
+    // media
+    media+= funcionarios[i].salario
+  }
+  console.log(`O funcionário com maior salário é: ${maior.nome}`)
+  console.log(`A média salarial é R$ ${media / funcionarios.length}`)
+  
+  // gerentes
+  let qtde = 0 
+  for (let i = 0; i < 6; i++) {    
+    if (funcionarios[i].cargo === `gerente`) {
+      qtde++
+      console.log(funcionarios[i])
+    }   
+  }
+  console.log(`Tem ${qtde} Gerentes`)
+
+}
+
+function cadastroProjetos() {
+  
+  let projetos = []
+
+  // preencher
+  for (let i = 0; i < 7; i++) {
+    let info = {
+      nomeProjeto: prompt(`Nome do Projeto ${i+1}`),
+      empresa: prompt(`Empresa`).toLowerCase(),
+      duracaoMeses: Number(prompt(`Duração (em meses)`)),
+      orcamento: Number(prompt(`Orçamento`))
+    }
+    projetos.push(info)
+  }
+
+  // duracao e meses
+  for (let i = 0; i < 7; i++) {
+    if (projetos[i].duracaoMeses > 12 && projetos[i].orcamento > 1000000.00) {
+      console.log(projetos[i])
+    }
+  }
+
+  // maior orcamento
+  let maior = projetos[0]
+  let media = 0
+
+  // maior e media
+  for (let i = 0; i < 7; i++) {
+    if (projetos[i].orcamento > maior.orcamento) {
+      maior = projetos[i]
+    }
+    media+= projetos[i].duracaoMeses
+  }
+
+  // inovatech
+  let qtde = 0
+  for (let i = 0; i < 7; i++) {
+    if (projetos[i].empresa === `inovatech`) {
+      qtde++
+    }
+  }
+
+  // soma de orcamento
+  let totalGasto = 0
+  for (let i = 0; i < 7; i++) {
+    if (projetos[i].duracaoMeses < 6) {
+      totalGasto+= projetos[i].orcamento
+    }
+  }
+
+  // exibir
+  console.log(`Maior orçamento: ${maior.nomeProjeto}`)
+  console.log(`Média de duração dos projetos: ${media / projetos.length}`)
+  console.log(`InovaTech foram realizados: ${qtde} projetos`)
+  console.log(`Total de orçamento com menos de 6 meses de duração: R$ ${totalGasto}`)
+
+
+}
