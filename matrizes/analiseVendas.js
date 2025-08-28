@@ -68,6 +68,5 @@ function analiseVendas() {
     }
   }
   console.log(`Média Geral: ${media / (vendas.length * vendas[0].length)}`)
-
-
+  
 }
