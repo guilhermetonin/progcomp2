@@ -1,6 +1,8 @@
 function indicePoluicao() {
   
-  // regioes e dias
+
+  // Preenche os Vetores com os Dados do Usuário
+  // regiões e dias
   let regioes = []
   let dias = []
 
@@ -15,7 +17,8 @@ function indicePoluicao() {
   }
 
 
-  // índice de poluição
+  // Preenche o Vetor com os Índices de Poluição
+  // r - regiões | d - dias
   let poluicao = []
 
   for (let r = 0; r < 5; r++){ 
@@ -24,40 +27,51 @@ function indicePoluicao() {
     for (let d = 0; d < 5; d++) {
       do {
         poluicao[r][d] = (Number(prompt(`Índice da poluição da região ${regioes[r]} no dia ${dias[d]}:`)))
-      }
-      while (poluicao[r][d] < 0 || poluicao[r][d] > 500)
+
+      } // valida a entrada, somente valores entre 0 a 500
+      while (poluicao[r][d] < 0 || poluicao[r][d] > 500) 
 
     }
   }
 
-  // d. principal
+
+  // Diagonal Principal
+  // é formada pelo os valores onde os índices da linha e da coluna são iguais
   let somaDP = 0
 
+  console.log(`Diagonal Principal:`)
   for (let i = 0; i < poluicao.length; i++) {
-    console.log(`Diagonal principal: ${poluicao[i][i]}`)
+    console.log(poluicao[i][i])
     somaDP += poluicao[i][i]
+
   }
 
   console.log(`Média da Diagonal Principal: ${somaDP / poluicao.length}`)
 
-  // d. secundária
+
+  // Diagonal Secundária
+  // a formula 4-i é usado para acessar os valores corretos
   let somaDS = 0
 
+  console.log(`\nDiagonal secundária:`)
   for (let i = 0; i < 5; i++) {
-    console.log(`Diagonal secundária: ${poluicao[i][4-i]}`)
+    console.log(poluicao[i][4-i])
     somaDS += poluicao[i][4-i]
+    
   }
 
   console.log(`Média da Diagonal Secundária: ${somaDS / poluicao.length}`)
 
-  // maior
+
+  // Região e Dia com Maior Índice de Poluição
   let maior = poluicao[0][0]
-  let rMaior = 0
-  let dMaior = 0
+  let rMaior = 0 // guarda a posição da região
+  let dMaior = 0 // guarda a posição do dia
 
   for (let r = 0; r < 5; r++) {
 
     for (let d = 0; d < 5; d++) {
+
       if (poluicao[r][d] > maior) {
         maior = poluicao[r][d]
         rMaior = r
@@ -67,14 +81,19 @@ function indicePoluicao() {
     }
   }
   
-  console.log(`Maior nível de poluição foi ${maior} na região ${regioes[rMaior]} no dia ${dias[dMaior]}`)
+  console.log(`\nMaior nível de poluição: ${maior}`)
+  console.log(`Na região: ${regioes[rMaior]}`)
+  console.log(`No dia: ${dias[dMaior]}`) 
 
-  // nivel critico
+
+  // Qtde de Níveis Críticos
+  // acima de 300 é considerado um nível crítico
   let critico = 0
 
   for (let r = 0; r < 5; r++) {
 
     for (let d = 0; d < 5; d++) {
+
       if (poluicao[r][d] > 300) {
         critico++
 
@@ -82,36 +101,41 @@ function indicePoluicao() {
     }
   }
 
-  console.log(`Quantidade de níveis críticos: ${critico}`)
+  console.log(`\nQuantidade de níveis críticos: ${critico}`)
 
 
-  // menor
-
+  // Encontrar a Média 
+  // de cada região ao longo de 5 dias
   let medias = []
   let somaDias = 0
 
   for (let r = 0; r < poluicao.length; r++) {
-    somaDias = 0
+    somaDias = 0 // reseta para calcular dnv
 
     for (let d = 0; d < poluicao.length; d++) {
-      somaDias += poluicao[r][d]
+      somaDias += poluicao[r][d] // soma de todos os índices
 
     }
-    medias.push(somaDias / poluicao.length)
+    medias.push(somaDias / poluicao.length) // coloca a média dentro do vetor
 
   }
 
+
+  // Região com Menor Média de Poluição
   let menor = medias[0]
-  let rMenor = 0
+  let rMenor = 0 // guardar a posicão da região
 
   for (let i = 0; i < medias.length; i++) {
+
     if (medias[i] < menor) {
       menor = medias[i]
       rMenor = i
+
     }
   }
 
-  console.log(`Região com menor média: ${menor} foi ${regioes[rMenor]}`)
+  console.log(`Menor média de poluição: ${menor}`)
+  console.log(`Foi da região: ${regioes[rMenor]}`)
 
 
 } // 
