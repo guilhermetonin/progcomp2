@@ -1,26 +1,32 @@
-function string() {
+// tira os espaços antes e depois
+let palavra2 = prompt("")
 
-  // string é praticamente um vetor em JS
-  let frase = "Estou estudando JS"
-  
-  // 
-  frase.length
+// cria um vetor da palavra limpa
+let limpa = palavra.trim()
 
-  toUpperCase
+// converte a palavra em um vetor, palavra por palavra
+let vetor = limpa.split("")
 
-  toLowerCase
+// inverte a palavra do tipo vetor
+let invertida2 = vetor.reverse()
 
+// converte vetor em string
+let invertidaString = invertida.join("")
 
-  // verifica se há determinado texto
-  frase.toUpperCase().includes(`JS`)
-
-
-  // 
-  frase.slice(0,5) // o 5 nao entra
-
-  // ultimos 5 caracteres
-  frase.slice(-5)
-
-
-
+if (invertidaString === limpa) {
+  console.log(``) 
 }
+else {
+  console.log(``)
+}
+
+// outro jeito
+
+let palavra = prompt("Informe uma palavra")
+
+let invertida = palavra.trim().split("").reverse().join()
+
+if (palavra.trim() === invertida){ // compara duas strings
+    alert('São palíndromas')
+}
+else alert('Não são palíndromas')
