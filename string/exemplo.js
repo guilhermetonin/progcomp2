@@ -1,10 +1,7 @@
-// tira os espaços antes e depois
-let palavra2 = prompt("")
-
-// cria um vetor da palavra limpa
+// tira os espaços antes e depois | " teste   " > "teste"
 let limpa = palavra.trim()
 
-// converte a palavra em um vetor, palavra por palavra
+// converte a palavra em um vetor, letra por letra | "ola" > 'o' 'l' 'a' 
 let vetor = limpa.split("")
 
 // inverte a palavra do tipo vetor
@@ -14,7 +11,7 @@ let invertida2 = vetor.reverse()
 let invertidaString = invertida.join("")
 
 if (invertidaString === limpa) {
-  console.log(``) 
+  console.log(``)
 }
 else {
   console.log(``)
@@ -26,7 +23,7 @@ let palavra = prompt("Informe uma palavra")
 
 let invertida = palavra.trim().split("").reverse().join()
 
-if (palavra.trim() === invertida){ // compara duas strings
-    alert('São palíndromas')
+if (palavra.trim() === invertida) { // compara duas strings
+  alert('São palíndromas')
 }
 else alert('Não são palíndromas')

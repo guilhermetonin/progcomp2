@@ -1,5 +1,5 @@
-var input = require('fs').readFileSync('/dev/stdin', 'utf8');
-var lines = input.split('\n');
+var input = require('fs').readFileSync('/dev/stdin', 'utf8')
+var lines = input.split('\n')
 
 let nome = lines[0]
 let salarioFixo = parseFloat(lines[1])
