@@ -22,11 +22,14 @@ function cadastrarNovo(alunos) {
 }
 function removeAluno(alunos, nome) {
   for (let i = 0; i < alunos.length; i++) {
+    // tem no sistema
     if (nome == alunos[i].nome) {
-      alunos.splice(i, 1) // remove do vetor
+      alunos.splice(i, 1) // (índice, qtde elemento) 
       return // encerra a função
     }
   }
+  // não tem no sistema
+  alert(`Aluno não encontrado.`)
 }
 function main() {
   let vetor = []
