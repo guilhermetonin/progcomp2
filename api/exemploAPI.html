@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+  <html lang="pt-BR">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Exemplo de Consumo de API</title>
+  </head>
+
+  <body>
+    <h1>Lista de Usuários</h1>
+    <button onclick="carregarUsuarios()">Carregar Dados</button>
+    <ul id="listaUsuarios"></ul>
+
+    <script>
+      // async - livra de fazer outras atividades quem chamou essa função
+      async function carregarUsuarios() {
+        try {
+          // await - aguarda resposta do servidor
+          const resposta = await fetch("https://jsonplaceholder.typicode.com/users")
+          // api retornou string é preciso converter para JSON
+          const usuarios = await resposta.json()
+
+          const lista = document.getElementById("listaUsuarios") // ul
+          lista.innerHTML = ""; // limpa a lista
+          
+          // para cada usuário
+          for (let i = 0; i < usuarios.length; i++) {
+            // cria um elemento html 'li'
+            const li = document.createElement("li")
+            // insire texto no item da lista
+            li.textContent = `${usuarios[i].name} - ${usuarios[i].email}`
+             // associa o item da lista na lista
+            lista.appendChild(li)
+          }
+        } catch (erro) {
+          console.error("Erro ao carregar usuários:", erro);
+          alert("Não foi possível carregar os dados da API.");
+        }
+      }
+    </script>
+  </body>
+</html>
